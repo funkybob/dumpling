@@ -1,0 +1,35 @@
+from django.conf import settings
+from django.shortcuts import get_object_or_404
+from django.views.generic import DetailView
+
+from .models import Page
+
+
+class PageView(DetailView):
+    context_object_name = 'page'
+
+    def get_queryset(self):
+        return Page.objects.published()
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()
+
+        paths = list(filter(None, self.kwargs.get('path', '/').split('/')))
+
+        if not paths:
+            paths = ['']
+
+        paths.reverse()
+
+        query = {}
+        prefix = 'path'
+        for step in paths:
+            query[prefix] = step
+            prefix = 'parent__' + prefix
+        query[prefix.replace('path', 'isnull')] = True
+
+        return get_object_or_404(queryset, **query)
+
+    def get_template_names(self):
+        return self.object.template[len(settings.USER_TEMPLATES_PATH):]
