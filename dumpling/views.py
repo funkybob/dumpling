@@ -9,7 +9,7 @@ class PageView(DetailView):
     context_object_name = 'page'
 
     def get_queryset(self):
-        return Page.objects.published()
+        return Page.objects.published().prefetch_related('pagewidget__widget')
 
     def get_object(self, queryset=None):
         if queryset is None:
@@ -33,3 +33,8 @@ class PageView(DetailView):
 
     def get_template_names(self):
         return self.object.template[len(settings.USER_TEMPLATES_PATH):]
+
+#
+# Management Interface
+#
+
