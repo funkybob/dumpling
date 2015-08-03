@@ -1,10 +1,9 @@
 from django.shortcuts import render
-from django.apps import apps
+
+from ..models import Page
 
 
-Page = apps.get_model('dumpling.Page')
-
-def index(request):                                                  
-    return render(request, 'dumpling/index.html', {                   
-        'roots': Page.objects.filter(parent=None),                    
-    })       
+def index(request):
+    return render(request, 'dumpling/index.html', {
+        'roots': Page.objects.filter(parent=None),
+    })

@@ -1,5 +1,9 @@
 
+import os
+import re
+
 from django.forms.fields import ChoiceField
+
 
 class RelativePathField(ChoiceField):
     def __init__(self, path, match=None, recursive=False, allow_files=True,
@@ -7,7 +11,7 @@ class RelativePathField(ChoiceField):
                  initial=None, help_text='', *args, **kwargs):
         self.path, self.match, self.recursive = path, match, recursive
         self.allow_files, self.allow_folders = allow_files, allow_folders
-        super(FilePathField, self).__init__(choices=(), required=required,
+        super(RelativePathField, self).__init__(choices=(), required=required,
             widget=widget, label=label, initial=initial, help_text=help_text,
             *args, **kwargs)
 

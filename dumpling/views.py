@@ -1,8 +1,10 @@
 from django.conf import settings
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
 
-from .models import Page
+from scss import Compiler, Namespace, String
+
+from .models import Page, ThemeValue
 
 
 class PageView(DetailView):
@@ -36,6 +38,7 @@ class PageView(DetailView):
 
 
 def styles(request, name):
+    src = ''
     namespace = Namespace()
     for tv in ThemeValue.objects.all():
         namespace.set_variable('${}-{}'.format(tv.group, tv.name), String(tv.value))
