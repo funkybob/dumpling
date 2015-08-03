@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
 
@@ -45,4 +46,4 @@ def styles(request, name):
     for tv in ThemeValue.objects.all():
         namespace.set_variable('${}-{}'.format(tv.group, tv.name), String(tv.value))
     compiler = Compiler(namespace=namespace)
-    return compiler.compile_string(src)
+    return HttpResponse(compiler.compile_string(src), content_type='text/css')
