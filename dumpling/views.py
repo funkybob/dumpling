@@ -2,7 +2,9 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
 
-from scss import Compiler, Namespace, String
+from scss import Compiler
+from scss.namespace import Namespace
+from scss.types import String
 
 from .models import Page, ThemeValue
 
