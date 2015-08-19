@@ -2,16 +2,32 @@
 <html class="uk-height-1-1">
     <head>
         <title> Dumpling - {% block title %} Management Interface {% endblock %} </title>
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.21.0/css/uikit.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'dumpling/css/pure-min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'dumpling/css/base.css' %}">
     </head>
-    <body class="uk-flux uk-height-1-1">
-        <header class="uk-width-1-1">
+    <body class="pure-g">
+        <header class="pure-u-1-1">
+            <nav class="pure-menu pure-menu-horizontal">
+                <a href="#" class="pure-menu-heading">Dumpling</a>
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Item</a></li>
+                </ul>
+            </nav>
         </header>
-        <nav class="uk-width-1-5">
+        <nav class="pure-u-1-5 pure-menu">
+            <span class="pure-menu-heading">Pages</span>
+            <ul class="pure-menu-list">
+            </ul>
+            <span class="pure-menu-heading">Templates</span>
+            <ul class="pure-menu-list">
+            </ul>
+            <span class="pure-menu-heading">Files</span>
+            <ul class="pure-menu-list">
+            </ul>
         </nav>
-        <main class="uk-width-4-5">
+        <main class="pure-u-4-5">
         </main>
-        <footer class="uk-width-1-1">
+        <footer class="pure-u-1-1">
         </footer>
     </body>
 </html>
