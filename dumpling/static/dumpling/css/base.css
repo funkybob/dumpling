@@ -1,3 +1,31 @@
 html, body {
     height: 100vh;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+header, footer {
+    flex: 0;
+    padding: 1em;
+}
+
+body > div {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+nav, main {
+  flex: 1;
+  padding: 1em;
+}
+nav {
+  flex-basis: 25%;
+}
+main {
+  flex-basis: 75%;
+}
