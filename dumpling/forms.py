@@ -12,8 +12,8 @@ class RelativePathField(ChoiceField):
         self.path, self.match, self.recursive = path, match, recursive
         self.allow_files, self.allow_folders = allow_files, allow_folders
         super(RelativePathField, self).__init__(choices=(), required=required,
-            widget=widget, label=label, initial=initial, help_text=help_text,
-            *args, **kwargs)
+              widget=widget, label=label, initial=initial, help_text=help_text,
+              *args, **kwargs)
 
         if self.required:
             self.choices = []
